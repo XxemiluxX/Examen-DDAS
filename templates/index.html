@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<h2>Lista de tareas</h2>
+
+
+<div class="filtros">
+
+    <a href="/"
+       class="{% if not estado %}activo{% endif %}">
+        Todas
+    </a>
+
+    <a href="/?estado=pendientes"
+       class="{% if estado == 'pendientes' %}activo{% endif %}">
+        Pendientes
+    </a>
+
+    <a href="/?estado=completadas"
+       class="{% if estado == 'completadas' %}activo{% endif %}">
+        Completadas
+    </a>
+
+</div>
+
+{% if tareas %}
+
+    <ul class="lista-tareas">
+
+    {% for tarea in tareas %}
+
+        <li class="tarea {% if tarea.completada %}completada{% endif %}">
+
+            <h3>{{ tarea.titulo }}</h3>
+           <p class="descripcion">{{ tarea.descripcion }}</p>
+
+            <p>
+                {% if tarea.completada %}
+                    ✅ Completada
+                {% else %}
+                    ⏳ Pendiente
+                {% endif %}
+            </p>
+
+            <div class="acciones">
+
+                {% if not tarea.completada %}
+                <form action="/completar/{{ tarea.id }}" method="post">
+                    <button class="btn-completar">Completar</button>
+                </form>
+                {% endif %}
+
+                <form action="/eliminar/{{ tarea.id }}" method="post">
+                    <button class="btn-eliminar">Eliminar</button>
+                </form>
+
+            </div>
+
+        </li>
+
+    {% endfor %}
+
+    </ul>
+
+{% else %}
+   <div class="empty-state">
+
+    <div class="empty-icon">📋</div>
+
+    <h3>No hay tareas registradas</h3>
+
+    <p>Agrega tu primera tarea para comenzar a organizar tu día</p>
+
+    <a href="/nueva" class="btn-crear">
+        + Crear primera tarea
+    </a>
+
+</div>
+{% endif %}
+
+{% endblock %}

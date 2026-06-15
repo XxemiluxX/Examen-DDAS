@@ -1,0 +1,259 @@
+:root {
+    --celeste: #4fc3f7;
+    --celeste-oscuro: #0288d1;
+    --fondo: #eaf6ff;
+    --card: #ffffff;
+    --texto: #263238;
+    --completado: #c8e6c9;
+    --pendiente: #ddf5f6;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #eaf6ff, #ffffff);
+    color: var(--texto);
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, var(--celeste), var(--celeste-oscuro));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* CONTENIDO */
+main {
+    padding: 25px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* BOTONES FILTRO */
+.filtros {
+    margin-bottom: 15px;
+}
+
+.filtros a {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 20px;
+    background: #d9f2ff;
+    color: var(--celeste-oscuro);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.filtros a:hover {
+    background: var(--celeste);
+    color: white;
+}
+
+/* LISTA */
+.lista-tareas {
+    list-style: none;
+    padding: 0;
+}
+
+.tarea {
+    background: var(--card);
+    padding: 18px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-left: 6px solid var(--celeste);
+    transition: transform 0.2s ease;
+}
+
+.tarea:hover {
+    transform: scale(1.01);
+}
+
+/* ESTADO */
+.tarea.completada {
+    background: var(--completado);
+    border-left-color: #2e7d32;
+    text-decoration: line-through;
+    opacity: 0.85;
+}
+
+.tarea:not(.completada) {
+    background: var(--pendiente);
+}
+
+/* ACCIONES */
+.acciones {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* BOTONES */
+button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* COMPLETAR */
+.btn-completar {
+    background: #4caf50;
+    color: white;
+}
+
+.btn-completar:hover {
+    background: #388e3c;
+}
+
+/* ELIMINAR */
+.btn-eliminar {
+    background: #e53935;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background: #b71c1c;
+}
+
+/* FORMULARIO */
+.formulario {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 2px solid #b3e5fc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+    border-color: var(--celeste);
+}
+
+.formulario button {
+    background: var(--celeste);
+    color: white;
+    width: 100%;
+}
+
+.filtros a:hover,
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.9);
+}
+.filtros a:hover,
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.9);
+}
+
+.filtros a.activo {
+    background: #0288d1;
+    color: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.filtros a.activo:hover {
+    filter: brightness(0.95);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+.empty-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.empty-state h3 {
+    color: #0288d1;
+    margin-bottom: 5px;
+}
+
+.empty-state p {
+    color: #607d8b;
+    margin-bottom: 20px;
+}
+
+/* Botón bonito */
+.btn-crear {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #4fc3f7;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-crear:hover {
+    background: #0288d1;
+    transform: scale(1.05);
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.descripcion {
+    margin: 10px 0;
+    padding: 10px 12px;
+    background: #ffffff;
+    border-left: 4px solid #4fc3f7;
+    border-radius: 8px;
+}
